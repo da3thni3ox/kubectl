@@ -15,4 +15,4 @@ jobs:
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - if [[ $TRAVIS_BRANCH = master ]]; then docker push $DOCKER_REPO_SLUG:latest; else true; fi
-  - docker run --rm -v "config/kubeconfig:/root/.kube/config" d3r7nit3ox/kubectl config view
+  - docker run --rm -v "$PWD/config/kubeconfig:/root/.kube/config" d3r7nit3ox/kubectl config view
