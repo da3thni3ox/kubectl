@@ -4,9 +4,13 @@ services:
 
 env:
   - DOCKER_REPO_SLUG=d3r7nit3ox/kubectl
-
+ 
 jobs:
   include:
+    - stage: Build Configuration kubernetes
+      name: Build configuration
+      script:
+        - envsubst < config/kubeconfig.tpl > config/kubeconfig
     - stage: Build
       name: Build image
       script:
